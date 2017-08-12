@@ -121,7 +121,29 @@ db.pokemons.save(poketest);
 var queryMarota = { name: /Poketest/i }; // Um regex em js só pra exercitar
 db.pokemons.find(queryMarota);
 
+// Aqui o id do cara é -> 598f286e2fc06a19a0fd7e40
 
+// Vamos buscar com o _id
+var queryId = {"_id": ObjectId("598f286e2fc06a19a0fd7e40")};
 
+// Fazer aqui uma query para alteração
+var changes = { description: "Mudando as coisas..." };
+
+// Primeiro o where, depois o update (sem maldade)
+db.pokemons.update(queryId, changes);
+```
+```json
+// Saída mais ou menos assim
+{
+	"nInserted" : 0,
+	"nUpserted" : 0,
+	"nMatched" : 1, // Achou aqui
+	"nModified" : 1, // Modificou
+	"nRemoved" : 0,
+	"lastOp" : {
+		"ts" : Timestamp(1502555927, 2),
+		"t" : 9
+	}
+}
 ```
 
