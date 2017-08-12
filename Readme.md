@@ -114,6 +114,14 @@ var poketest = {
   "attack": 168,
   "height": 0.75
 }
+
 db.pokemons.save(poketest);
+
+// Achando nosso cara
+var queryMarota = { name: /Poketest/i }; // Um regex em js só pra exercitar
+db.pokemons.find(queryMarota);
+
+
+
 ```
 
