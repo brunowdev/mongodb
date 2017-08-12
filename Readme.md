@@ -1,4 +1,5 @@
 # Repositório de estudos do MongoDB
+Contém exercícios de cursos, artigos, etc.
 
 ## Selecionar schema ##
 
@@ -306,7 +307,7 @@ db.pokemons.update({name: 'Pikachu'}, { $pull: { attacks: 'choque elétrico' }})
 }
 ```
 ```javascript
-// $pullAll -> inverso do pushAll
+// $pullAll -> inverso do $pushAll
 db.pokemons.update({name: 'Pikachu'}, { $pullAll: { attacks: ['ataque rápido', 'bola elétrica'] }});
 ```
 ```json
