@@ -214,4 +214,33 @@ db.pokemons.update({name: 'Pikachu'}, { $unset: { height: 1 }});
 	"type" : "electric",
 	"attack" : 120,
 }
-
+```
+## Incrementando um campos do documento ( $inc )
+```javascript
+// Passe o campo e por qual valor será incrementado
+db.pokemons.update({name: 'Pikachu'}, { $inc: { attack: 500 }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 620
+}
+```
+```javascript
+// Para decrementar passe o valor negativo
+db.pokemons.update({name: 'Pikachu'}, { $inc: { attack: -20 }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 600
+}
+```
