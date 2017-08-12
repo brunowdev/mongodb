@@ -262,3 +262,64 @@ db.pokemons.update({name: 'Pikachu'}, { $push: { moves: 'Choque do trovão' }});
 	]
 }
 ```
+```javascript
+// $pushAll
+db.pokemons.update({name: 'Pikachu'}, { $pushAll: { attacks: ['choque elétrico', 'ataque rápido', 'bola elétrica'] }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 620,
+	"moves" : [
+		"Choque do trovão"
+	],
+	"attacks" : [
+		"choque elétrico",
+		"ataque rápido",
+		"bola elétrica"
+	]
+}
+```
+```javascript
+// $pull
+db.pokemons.update({name: 'Pikachu'}, { $pull: { attacks: 'choque elétrico' }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 620,
+	"moves" : [
+		"Choque do trovão"
+	],
+	"attacks" : [ // Sumiu 1
+		"ataque rápido",
+		"bola elétrica"
+	]
+}
+```
+```javascript
+// $pullAll -> inverso do pushAll
+db.pokemons.update({name: 'Pikachu'}, { $pullAll: { attacks: ['ataque rápido', 'bola elétrica'] }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 620,
+	"moves" : [
+		"Choque do trovão"
+	],
+	"attacks" : [ ] // Funcionou
+}
+```
