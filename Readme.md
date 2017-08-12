@@ -373,3 +373,5 @@ db.pokemons.update(query, changes, options);
 	"moves" : [ ]
 }
 ```
+### multi ###
+Por padrão, o Mongo só altera um registro por vez. Se você quer fazer um update sem where numa sexta-feira, basta setar esse parâmetro para **true**.
