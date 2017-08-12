@@ -85,5 +85,14 @@ var query =  {campoExistente: {$exists: true}};
 db.pokemons.find(query);
 
 
+#Update
 
+var poketest = {
+  "name": "Poketest",
+  "description": "Só um test duh",
+  "type": "electric",
+  "attack": 168,
+  "height": 0.75
+}
+db.pokemons.save(poketest);
 
