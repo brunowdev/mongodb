@@ -28,7 +28,7 @@ db.pokemons.drop();
 ```javascript
 // Sem filtros no modo estagiário
 // Mas podem ser usados os mesmos filtros de busca igual lá em baixo
-// Atenção para o remove -> Diferente do update, o remove é "multi: true"
+// Atenção para o remove -> Diferente do update, o remove é multi: true
 db.pokemons.remove({});
 ```
 
