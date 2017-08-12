@@ -333,3 +333,43 @@ Por padrão ele é false. Caso o objeto buscado não seja encontrado ele irá cr
 ### $setOnInsert ###
 Um documento de parâmetro que pode ser passado com o upsert. Ideal para iniciar com valores padrões, caso o registro não exista.
 
+```javascript
+var query = { name: /Pokenotfind/i };
+var changes = {
+   $set: { active: true},
+   $setOnInsert: {
+     "name" : "NaoExisteMon",
+     "description" : null,
+     "type" : null,
+     "attack" : null,
+     "moves" : [ ]
+   }
+}
+var options = { upsert: true };
+
+db.pokemons.update(query, changes, options);
+```
+```json
+// Saída mais ou menos assim
+{
+	"nInserted" : 0,
+	"nUpserted" : 1, // Não achou e inseriu
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"lastOp" : {
+		"ts" : Timestamp(1502559476, 1),
+		"t" : 9
+	}
+}
+// Veja o registro com os valores do $setOnInsert
+{
+	"_id" : ObjectId("598f3d7d418d4803b15ed4f7"),
+	"active" : true,
+	"name" : "NaoExisteMon",
+	"description" : null,
+	"type" : null,
+	"attack" : null,
+	"moves" : [ ]
+}
+```
