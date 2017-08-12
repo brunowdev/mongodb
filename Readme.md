@@ -146,4 +146,18 @@ db.pokemons.update(queryId, changes);
 	}
 }
 ```
-
+```javascript
+// Vamos buscar o cara agora
+var query = {"_id": ObjectId("598f286e2fc06a19a0fd7e40")};
+db.pokemons.find(query);
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598f286e2fc06a19a0fd7e40"),
+	"description" : "Mudando as coisas..."
+}
+// Ihhh, acho que alguem deu um update zuado
+// Basicamente, não se pode passar só alguns campos e achar q o mongo vai fazer um patch do HTTP duhhh
+```
+ 
