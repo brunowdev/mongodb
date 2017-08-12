@@ -73,20 +73,24 @@ var query =  {$nor: [{height: 0.4},{height: 0.3}]};
 
 db.pokemons.find(query);
 
+```javascript
 // And
 var query =  {$and: [{height: 0.4},{height: {$gte: 0.3}}]};
 
 db.pokemons.find(query);
+```
 
-
+```javascript
 // Operador existêncial -> $exists
 var query =  {campoExistente: {$exists: true}};
 
 db.pokemons.find(query);
+```
 
+# Update
 
-#Update
-
+// Primeiro um save maroto
+```javascript
 var poketest = {
   "name": "Poketest",
   "description": "Só um test duh",
@@ -95,4 +99,4 @@ var poketest = {
   "height": 0.75
 }
 db.pokemons.save(poketest);
-
+```
