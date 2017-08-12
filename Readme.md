@@ -63,15 +63,19 @@ db.pokemons.find(query, fields);
 // $nor
 // $and
 
+```javascript
 // Or
 var query =  {$or: [{height: 0.4},{height: 0.3}]};
 
 db.pokemons.find(query);
+```
 
 // NotOr
+```javascript
 var query =  {$nor: [{height: 0.4},{height: 0.3}]};
 
 db.pokemons.find(query);
+```
 
 ```javascript
 // And
