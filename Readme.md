@@ -1,18 +1,27 @@
 
 
-// Selecionar schema
+# Selecionar schema
+```javascript
 use be-mean-pokemons
+```
 
-// Mostrar coleções
+# Mostrar coleções
+```javascript
 show collections
+```
 
-// Cria coleção
+# Criando uma coleção
+```javascript
 db.createCollection('pokemons')
+```
 
-// Remover todos os documentos da coleção
+# Removendo todos os documentos de uma coleção
+```javascript
 db.pokemons.remove({});
+```
 
-// Inserir registros na coleção
+# Inserindo registros em uma coleção
+```javascript
 db.pokemons.insert([
 {
   "name": "Pikachu",
@@ -36,8 +45,10 @@ db.pokemons.insert([
   "height": 0.3,
   "defense": 35
 }]);
+```
 
-
+# Comando find
+```javascript
 // O find aceita dois parâmetros
 // 1 - clausula 2 - colunas
 
@@ -47,18 +58,19 @@ db.pokemons.find(query)
 // A cláusula é o where já as colunas são o select
 // 1 -> true (vai retornar) ou 0 (duhhhh)
 
-var query = {name:"Pikachu"};
-var fields = {name:1,_id:0}
+var query = { name: "Pikachu" };
+var fields = { name: 1, _id: 0 };
 
 db.pokemons.find(query, fields);
+```
 
-// Operadores
+# Operadores aritméticos
 // <   ---  $lt
 // <=  ---  $lte
 // >   ---  $gt
 // >=  ---  $gte
 
-// Lógicos
+# Operadores lógicos
 // $or
 // $nor
 // $and
@@ -93,8 +105,8 @@ db.pokemons.find(query);
 
 # Update
 
-// Primeiro um save maroto
 ```javascript
+// Primeiro um save maroto
 var poketest = {
   "name": "Poketest",
   "description": "Só um test duh",
@@ -104,3 +116,4 @@ var poketest = {
 }
 db.pokemons.save(poketest);
 ```
+
