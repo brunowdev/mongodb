@@ -244,3 +244,21 @@ db.pokemons.update({name: 'Pikachu'}, { $inc: { attack: -20 }});
 	"attack" : 600
 }
 ```
+## Arrays
+```javascript
+// Adicionando um campo do tipo array
+db.pokemons.update({name: 'Pikachu'}, { $push: { moves: 'Choque do trovão' }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 620,
+	"moves" : [ // Ó, criou e adicionou?
+		"Choque do trovão"
+	]
+}
+```
