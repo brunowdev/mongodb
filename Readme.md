@@ -399,3 +399,19 @@ db.pokemons.find(query);
 var query = { attacks: {$all: ['ataque rápido', 'bola elétrica']}};
 db.pokemons.find(query);
 ```
+
+### $ne ###
+
+```javascript
+// Ne ou NotEquals
+var query = { name: {$ne: ['Pikachu']}};
+db.pokemons.find(query);
+```
+
+### $not ###
+
+```javascript
+// Not
+var query = { name: {$not: ['Pikachu']}};
+db.pokemons.find(query);
+```
