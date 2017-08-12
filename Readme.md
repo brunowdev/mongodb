@@ -65,15 +65,14 @@ db.pokemons.find(query, fields);
 ```
 
 # Operadores aritméticos
-// <   ---  $lt
-// <=  ---  $lte
-// >   ---  $gt
-// >=  ---  $gte
+```javascript
+// <   <->  $lt
+// <=  <->  $lte
+// >   <->  $gt
+// >=  <->  $gte
+```
 
-# Operadores lógicos
-// $or
-// $nor
-// $and
+# Operadores lógicos ( $or, $nor, $and )
 
 ```javascript
 // Or
@@ -82,8 +81,8 @@ var query =  {$or: [{height: 0.4},{height: 0.3}]};
 db.pokemons.find(query);
 ```
 
-// NotOr
 ```javascript
+// NotOr
 var query =  {$nor: [{height: 0.4},{height: 0.3}]};
 
 db.pokemons.find(query);
@@ -93,7 +92,7 @@ db.pokemons.find(query);
 // And
 var query =  {$and: [{height: 0.4},{height: {$gte: 0.3}}]};
 
-db.pokemons.find(query);
+db.pokemons.find(query); 
 ```
 
 ```javascript
@@ -160,4 +159,37 @@ db.pokemons.find(query);
 // Ihhh, acho que alguem deu um update zuado
 // Basicamente, não se pode passar só alguns campos e achar q o mongo vai fazer um patch do HTTP duhhh
 ```
- 
+# Fazendo um update correto like a boss
+
+```javascript
+db.pokemons.update({name: 'Pikachu'},  { $set: { attack: 120}});
+```
+```json
+// Saída mais ou menos assim
+{
+	"nInserted" : 0,
+	"nUpserted" : 0,
+	"nMatched" : 1,
+	"nModified" : 1,
+	"nRemoved" : 0,
+	"lastOp" : {
+		"ts" : Timestamp(1502556815, 2),
+		"t" : 9
+	}
+}
+```
+```javascript
+// Buscando o maluco
+db.pokemons.find({name: 'Pikachu'});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 120,
+	"height" : 0.4
+}
+```
