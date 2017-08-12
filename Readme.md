@@ -324,9 +324,6 @@ db.pokemons.update({name: 'Pikachu'}, { $pullAll: { attacks: ['ataque rápido', 
 	"attacks" : [ ] // Funcionou
 }
 ```
-## Options no find ##
-São o terceiro parâmetro em uma query de busca para insert, update ou remove.
-
 ### upsert ### 
 Por padrão ele é false. Caso o objeto buscado não seja encontrado ele irá criá-lo.
 
@@ -375,3 +372,30 @@ db.pokemons.update(query, changes, options);
 ```
 ### multi ###
 Por padrão, o Mongo só altera um registro por vez. Se você quer fazer um update sem where numa sexta-feira, basta setar esse parâmetro para **true**.
+
+### Write concerns ###
+
+O Mongo retorna se o comando foi escrito com sucesso. Esse nível pode ser maior ou menor. Em alguns casos, para maior performance, pode ser interessante diminuir esse nível. Assim a query será executada com maior velocidade. Mais informações [aqui](https://docs.mongodb.com/manual/reference/write-concern/).
+
+
+### $in ###
+
+```javascript
+// In
+var query = { name: {$in: ['Pikachu']}};
+db.pokemons.find(query);
+```
+
+### $nin ###
+```javascript
+// Not in
+var query = { name: {$nin: ['Pikachu']}};
+db.pokemons.find(query);
+```
+
+### $all ###
+```javascript
+// All representa um and
+var query = { attacks: {$all: ['ataque rápido', 'bola elétrica']}};
+db.pokemons.find(query);
+```
