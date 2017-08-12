@@ -324,3 +324,12 @@ db.pokemons.update({name: 'Pikachu'}, { $pullAll: { attacks: ['ataque rápido', 
 	"attacks" : [ ] // Funcionou
 }
 ```
+## Options no find ##
+São o terceiro parâmetro em uma query de busca para insert, update ou remove.
+
+### upsert ### 
+Por padrão ele é false. Caso o objeto buscado não seja encontrado ele irá criá-lo.
+
+### $setOnInsert ###
+Um documento de parâmetro que pode ser passado com o upsert. Ideal para iniciar com valores padrões, caso o registro não exista.
+
