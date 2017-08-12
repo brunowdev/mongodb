@@ -200,3 +200,18 @@ db.pokemons.find({name: 'Pikachu'});
 }
 // Não zuou nada :)
 ```
+## Deletando campos do documento ( $unset )
+```javascript
+// Segue o mesmo padrão do find 0 e 1 nos campos -> 1 vai remover
+db.pokemons.update({name: 'Pikachu'}, { $unset: { height: 1 }});
+```
+```json
+// Saída mais ou menos assim
+{
+	"_id" : ObjectId("598e60db2fc06a19a0fd7e3c"),
+	"name" : "Pikachu",
+	"description" : "Rato elétrico bem fofinho",
+	"type" : "electric",
+	"attack" : 120,
+}
+
