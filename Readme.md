@@ -1,26 +1,31 @@
+# Repositório de estudos do MongoDB
 
+## Selecionar schema ##
 
-# Selecionar schema
 ```javascript
 use be-mean-pokemons
 ```
 
-# Mostrar coleções
+## Mostrar coleções ##
+
 ```javascript
 show collections
 ```
 
-# Criando uma coleção
+## Criando uma coleção ##
 ```javascript
+
 db.createCollection('pokemons')
 ```
 
-# Removendo todos os documentos de uma coleção
+## Removendo todos os documentos de uma coleção ##
 ```javascript
+// Sem filtros no modo estagiário
+// Mas podem ser usados os mesmos filtros de busca igual lá em baixo
 db.pokemons.remove({});
 ```
 
-# Inserindo registros em uma coleção
+## Inserindo registros em uma coleção ##
 ```javascript
 db.pokemons.insert([
 {
@@ -47,7 +52,7 @@ db.pokemons.insert([
 }]);
 ```
 
-# Comando find
+## Comando find ##
 ```javascript
 // O find aceita dois parâmetros
 // 1 - clausula 2 - colunas
@@ -64,7 +69,7 @@ var fields = { name: 1, _id: 0 };
 db.pokemons.find(query, fields);
 ```
 
-# Operadores aritméticos
+## Operadores aritméticos ##
 ```javascript
 // <   <->  $lt
 // <=  <->  $lte
@@ -72,7 +77,7 @@ db.pokemons.find(query, fields);
 // >=  <->  $gte
 ```
 
-# Operadores lógicos ( $or, $nor, $and )
+## Operadores lógicos ( $or, $nor, $and ) ##
 
 ```javascript
 // Or
@@ -102,7 +107,7 @@ var query =  {campoExistente: {$exists: true}};
 db.pokemons.find(query);
 ```
 
-# Update
+## Update ##
 
 ```javascript
 // Primeiro um save maroto
@@ -159,9 +164,10 @@ db.pokemons.find(query);
 // Ihhh, acho que alguem deu um update zuado
 // Basicamente, não se pode passar só alguns campos e achar q o mongo vai fazer um patch do HTTP duhhh
 ```
-# Fazendo um update correto like a boss
+## Fazendo um update correto like a boss ##
 
 ```javascript
+// Só usar o operador $set passando o campo ou os campos
 db.pokemons.update({name: 'Pikachu'},  { $set: { attack: 120}});
 ```
 ```json
@@ -192,4 +198,5 @@ db.pokemons.find({name: 'Pikachu'});
 	"attack" : 120,
 	"height" : 0.4
 }
+// Não zuou nada :)
 ```
